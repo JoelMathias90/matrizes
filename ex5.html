@@ -1,0 +1,56 @@
+<!-- 5. Faça um algoritmo que carregue uma matriz 12 x 4 com os valores das vendas de uma loja, onde cada 
+linha representa um mês do ano e cada coluna representa uma semana do mês. Calcule e mostre:
+ • o total vendido em cada mês do ano, mostrando o nome do mês por extenso;
+ • o total vendido em cada semana durante todo o ano;
+ • o total vendido pela loja no ano. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function carregarMatriz() {
+            const matriz = []
+            for (let i = 0; i < 12; i++) {
+                matriz[i] = []
+                for (let j = 0; j < 4; j++) {
+                    const numero = Math.floor(Math.random() * 100)
+                    matriz[i][j] = numero
+                }
+            }
+            return matriz
+        }
+        let matriz = carregarMatriz()
+        console.table(matriz);
+        
+        let dicionario = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
+        let totalAno = 0
+        let totalSemana = [0, 0, 0, 0]
+        
+        for (let i = 0; i < matriz.length; i++) {
+            let somaMes = 0
+            for (let j = 0; j < matriz[i].length; j++) {
+                let valor = matriz[i][j]
+                somaMes += valor
+                totalAno += valor
+                totalSemana[j] += valor
+            }
+
+            console.log(`Total vendido em ${dicionario[i]}: ${somaMes}`);
+        }
+        for (let i = 0; i < 4; i++) {
+            console.log(`Total da semana ${i + 1}: ${totalSemana[i]}`);
+
+        }
+        console.log(`Total do ano: ${totalAno}`);
+
+    </script>
+</body>
+
+</html>
