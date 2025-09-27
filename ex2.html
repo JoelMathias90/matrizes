@@ -1,0 +1,39 @@
+<!--  2. Faça um algoritmo que carregue uma matriz 2 x 4 com números inteiros, calcule e mostre:
+ • a quantidade de elementos entre 12 e 20 em cada linha;
+ • a média dos elementos pares da matriz. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let matriz = []
+        function aleatorio () {
+            let pares = []
+            let somaPares = 0
+            for (let i = 0; i < 2; i++) {
+                matriz[i] = []
+                let qtdLinhas = 0
+                for (let j = 0; j < 4; j++) {
+                    let numero = Math.floor(Math.random() * 100)
+                    matriz[i][j] = numero
+                    if (numero >= 12 && numero <= 20) {                        
+                        qtdLinhas++
+                    }
+                    if (numero % 2 === 0) {
+                        pares.push(numero)
+                        somaPares += numero
+                    }
+                }
+                console.log(`Linha ${i + 1}: ${qtdLinhas}`);
+            }
+            console.log(`Média dos pares: ${(somaPares / pares.length).toFixed()}`);
+        }
+        aleatorio()
+    </script>
+</body>
+</html>
