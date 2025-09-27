@@ -1,0 +1,65 @@
+<!-- 4. Faça um algoritmo que receba:
+ • as notas de 15 alunos em cinco provas diferentes e armazene-as em uma matriz 15 x 5; 
+• as matrículas dos 15 alunos e armazene-os em um vetor de 15 posições. Calcule e mostre:
+ ◦ para cada aluno, a matrícula, a média aritmética das cinco provas e a situação (Aprovado, 
+Reprovado ou Exame); 
+◦ a média da classe.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const notas = []
+        const matriculas = []
+        function carregarMatriz() {
+            for (let i = 0; i < 15; i++) {
+                notas[i] = []
+                for (let j = 0; j < 5; j++) {
+                    const numero = Math.floor(Math.random() * 10 + 1)
+                    notas[i][j] = numero
+                }
+                matriculas.push(i + 1)
+            }
+        }
+
+        carregarMatriz()
+        console.table(notas);
+
+        let somaClasse = 0
+
+        for (let i = 0; i < notas.length; i++) {
+            let somaAluno = 0
+
+            for (let j = 0; j < notas[i].length; j++) {
+                somaAluno += notas[i][j]
+            }
+
+            somaClasse += somaAluno
+            const mediaAluno = somaAluno / notas[i].length
+
+            let situacao = ""
+            if (mediaAluno >= 7) {
+                situacao = "Aprovado"
+            } else if (mediaAluno >= 4 && mediaAluno < 7) {
+                situacao = "Exame"
+            } else {
+                situacao = "Reprovado"
+            }
+
+            console.log(`Matrícula: ${matriculas[i]}, Média: ${mediaAluno}, Situação: ${situacao}`);
+        }
+
+        const mediaClasse = somaClasse / (notas.length * notas[0].length)
+        console.log(`Média da Classe: ${mediaClasse}`);
+
+    </script>
+</body>
+
+</html>
