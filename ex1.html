@@ -1,0 +1,34 @@
+<!--  1. Faça um algoritmo que carregue uma matriz 3 x 5 com números inteiros, calcule e mostre a quantidade 
+de elementos entre 15 e 20. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let matriz = []
+        let quantidade = 0
+        function aleatorio () {
+            return Math.floor(Math.random() * 100)
+        }
+        for (let i = 0; i < 3; i++) {
+            matriz[i] = []
+            for (let j = 0; j < 5; j++) {
+                matriz[i][j] = aleatorio()
+                if (matriz[i][j] >= 15 && matriz[i][j] <= 20) {
+                    quantidade++
+                    console.log(matriz[i][j]);
+                }
+            }
+        }
+        console.log(matriz);
+        console.log(quantidade);
+        
+        
+    </script>
+</body>
+</html>
