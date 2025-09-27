@@ -1,0 +1,52 @@
+<!--  3. Faça um algoritmo que carregue uma matriz 6 x 3, calcule e mostre:
+ • o maior elemento da matriz e sua respectiva posição, ou seja, linha e coluna;
+ • o menor elemento da matriz e sua respectiva posição, ou seja, linha e coluna. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function carregarMatriz() {
+            const matriz = []
+            for (let i = 0; i < 6; i++) {
+                matriz[i] = []
+                for (let j = 0; j < 3; j++) {
+                    const numero = Math.floor(Math.random() * 100)
+                    matriz[i][j] = numero
+                }
+            }
+            return matriz
+        }
+        let matriz = carregarMatriz()
+
+        let maior = [matriz[0][0], []]
+        let menor = [matriz[0][0], []]
+
+        for (let i = 0; i < matriz.length; i++) {
+            for (let j = 0; j < matriz[i].length; j++) {
+                let atual = matriz[i][j]
+
+                if (atual >= maior[0]) {
+                    maior[0] = atual
+                    maior[1] = [i, j]
+                } else if (atual < menor[0]) {  
+                    menor[0] = atual
+                    menor[1] = [i, j]
+                }
+            }
+        }
+        console.table(matriz);
+        console.log(maior);
+        console.log(menor);
+
+    </script>
+</body>
+
+</html>
