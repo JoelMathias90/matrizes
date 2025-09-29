@@ -1,0 +1,65 @@
+<!--  7. Faça um algoritmo que carregue uma matriz M de ordem 4 x 6 e uma segunda matriz N de ordem 6 x 4, 
+calcule e imprima a soma das linhas de M com as colunas de N. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function carregarMatriz(linha, coluna) {
+            let matriz = []
+            for (let i = 0; i < linha; i++) {
+                matriz[i] = []
+                for (let j = 0; j < coluna; j++) {
+                    const numero = Math.floor(Math.random() * 100)
+                    matriz[i][j] = numero
+                }
+            }
+            return matriz
+        }
+        
+        let m = carregarMatriz(4, 6)
+        let soma_m = []
+        
+        for (let i = 0; i < m.length; i++) {
+            for (let j = 0; j < m[i].length; j++) {
+                if (!soma_m[i]) soma_m[i] = 0
+                soma_m[i] += m[i][j]
+            }
+        }
+
+        let n = carregarMatriz(6, 4)
+        let soma_n = []
+
+        for (let i = 0; i < n.length; i++) {
+            for (let j = 0; j < n[i].length; j++) {
+                if (!soma_n[j]) soma_n[j] = 0
+                soma_n[j] += n[i][j]
+            }
+        }
+
+        let somaMatrizes = []
+
+        for (let i = 0; i < soma_m.length; i++) {
+            somaMatrizes[i] = []
+            for (let j = 0; j < soma_n.length; j++) {
+                somaMatrizes[i][j] = soma_m[i] + soma_n[j]
+            }
+        }
+
+        console.table(m);
+        console.table(n);
+        console.log(soma_m);
+        console.log(soma_n);
+        console.table(somaMatrizes);
+
+    </script>
+</body>
+
+</html>
