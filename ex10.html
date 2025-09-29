@@ -1,0 +1,58 @@
+<!-- 10. Faça um algoritmo que carregue uma matriz 5 x 5 com números inteiros, calcule e mostre a soma:
+ • dos elementos da linha 4;
+ • dos elementos da coluna 2;
+ • dos elementos da diagonal principal;
+ • dos elementos da diagonal secundária; 
+• de todos os elementos da matriz. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function carregarMatriz(linha, coluna) {
+            let matriz = []
+            for (let i = 0; i < linha; i++) {
+                matriz[i] = []
+                for (let j = 0; j < coluna; j++) {
+                    const numero = Math.floor(Math.random() * 100)
+                    matriz[i][j] = numero
+                }
+            }
+            return matriz
+        }
+        let matriz = carregarMatriz(5, 5)
+        console.table(matriz);
+        
+        let linha4 = 0
+        let coluna2 = 0
+        let diagonalPrincipal = 0
+        let diagonalSecundaria = 0
+        let somaTotal = 0
+
+        for (let i = 0; i < matriz.length; i++) {
+            for (let j = 0; j < matriz[0].length; j++) {
+                if (i === 3) linha4 += matriz[i][j]
+                if (j === 2) coluna2 += matriz[i][j]
+                somaTotal += matriz[i][j]
+            }
+            diagonalSecundaria += matriz[i][(matriz.length - 1) - i]
+            diagonalPrincipal += matriz[i][i] 
+        }
+        console.log('Soma: ');
+        
+        console.log('Linha 4: ', linha4);
+        console.log('Coluna 2: ', coluna2);
+        console.log('Diagonal principal: ', diagonalPrincipal);
+        console.log('Diagonal secundária: ', diagonalSecundaria);
+        console.log('Soma total: ', somaTotal);
+    </script>
+</body>
+
+</html>
