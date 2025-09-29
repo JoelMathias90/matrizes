@@ -1,0 +1,43 @@
+<!--  9. Faça um algoritmo que carregue uma matriz 3 x 3 com números reais e receba um valor, número 
+digitado pelo usuário, calcule e mostre a matriz resultante da multiplicação do número digitado por 
+elemento da matriz. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function carregarMatriz(linha, coluna) {
+            let matriz = []
+            for (let i = 0; i < linha; i++) {
+                matriz[i] = []
+                for (let j = 0; j < coluna; j++) {
+                    const numero = Math.floor(Math.random() * 100)
+                    matriz[i][j] = numero
+                }
+            }
+            return matriz
+        }
+        const matriz = carregarMatriz(3, 3) 
+        let input = parseInt(prompt("Digite um número:"))
+        let resultado = []
+        for (let i = 0; i < matriz.length; i++) {
+            resultado[i] = []
+            for (let j = 0; j < matriz[0].length; j++) {
+                resultado[i][j] = input * matriz[i][j]
+            }
+        }
+        console.log(input);
+        console.table(matriz);
+        console.table(resultado);
+        
+    </script>
+</body>
+
+</html>
