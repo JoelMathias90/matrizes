@@ -1,0 +1,53 @@
+<!--  8. Faça um algoritmo que carregue duas matrizes 3 x 8 com números inteiros, calcule e mostre:
+ • a soma das duas matrizes, resultando em uma terceira matriz também de ordem 3 x 8,
+ • a diferença das duas matrizes, resultando em uma quarta matriz também de ordem 3 x 8. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function carregarMatriz(linha, coluna) {
+            let matriz = []
+            for (let i = 0; i < linha; i++) {
+                matriz[i] = []
+                for (let j = 0; j < coluna; j++) {
+                    const numero = Math.floor(Math.random() * 100)
+                    matriz[i][j] = numero
+                }
+            }
+            return matriz
+        }
+        let x = carregarMatriz(3, 4)
+        let y = carregarMatriz(3, 4)
+        let soma_xy =  []
+        let diferenca_xy = []
+
+        for (let i = 0; i < x.length; i++) {
+            soma_xy[i] = []
+            diferenca_xy[i] = [] 
+            for (let j = 0; j < x[0].length; j++) {
+                soma_xy[i][j] = x[i][j] + y[i][j]
+                if (x[i][j] - y[i][j] < 0) {
+                    diferenca_xy[i][j] = -(x[i][j] - y[i][j])
+                } else {
+                    diferenca_xy[i][j] = x[i][j] - y[i][j]
+                }
+            }
+        }
+
+        console.table(x);
+        console.table(y);
+        console.table(soma_xy);
+        console.table(diferenca_xy);
+
+    </script>
+</body>
+
+</html>
