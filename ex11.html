@@ -1,0 +1,94 @@
+<!--  11. Faça um algoritmo que receba a idade de oito alunos e armazene-as em um vetor. Em um outro vetor 
+armazene o código de cinco disciplinas e em uma matriz armazene a quantidade de provas que cada 
+aluno fez em cada disciplina. Calcule e mostre:
+    • a quantidade de alunos com idade entre 18 e 25 anos e que fizeram mais de duas provas em uma 
+    disciplina com código digitado pelo usuário. O usuário pode digitar um código que não está 
+    cadastrado; nesse caso, mostrar mensagem.
+    • uma listagem com o número do aluno e o código da disciplina dos alunos que fizeram menos de 
+    três provas. Analisar cada disciplina. 
+    • a média de idade dos alunos que não fizeram nenhuma prova em alguma disciplina. Cuidado para 
+    não contar duas vezes o mesmo aluno.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function gerarIdades (qtd) {
+            const vetor = []
+            for (let i = 0; i < qtd; i++) {
+                vetor.push(Math.floor(Math.random() * 18 + 5))
+            }
+            return vetor
+        }
+        function gerarMatriz (linha, coluna) {
+            const matriz = []
+            for (let i = 0; i < linha; i++) {
+                matriz[i] = []
+                for (let j = 0; j < coluna; j++) {
+                    matriz[i][j] = Math.floor(Math.random() * 5)
+                }
+            }
+            return matriz
+        }
+
+        const idades = gerarIdades(8)
+        const disciplinas = [10, 20, 30, 40, 50]
+        const matriz = gerarMatriz(8, 5)
+        const numeroAluno = []
+        const disciplina3provas = []
+        const semDisciplina = []
+        let qtdAlunos18a25 = 0
+
+        for (let i = 0; i < matriz.length; i++) {
+            let alunoMenos3 = false
+            let disciplinaMenos3 = []
+            for (let j = 0; j < matriz[i].length; j++) {
+                if (idades[i] >= 18 && idades[i] <= 25) {
+                    if (matriz[i][j] >= 2) {
+                        qtdAlunos18a25++
+                        break
+                    }
+                }
+                if (matriz[i][j] < 3) {
+                    alunoMenos3 = true
+                    disciplinaMenos3.push(disciplinas[j])
+                }
+            }
+            if (alunoMenos3) {
+                numeroAluno.push(i)
+                disciplina3provas.push(disciplinaMenos3)
+            }
+
+            for (let j = 0; j < matriz[i].length; j++) {
+                if (matriz[i][j] === 0) {
+                    semDisciplina.push(idades[i])
+                    break
+                }
+            }
+        }
+        let somaSemDisciplinas = 0
+
+        for (let i = 0; i < semDisciplina.length; i++) {
+            somaSemDisciplinas += semDisciplina[i]
+        }
+
+        let mediaSemDisciplinas = somaSemDisciplinas / semDisciplina.length
+
+        console.log('Idade de cada aluno: ', idades);
+        console.log('Código das disciplinas: ', disciplinas);
+        console.table(matriz);
+        console.log('Quantidade de alunos de 18 à 25 com +2 na disciplina: ', qtdAlunos18a25);
+        console.log('Alunos que fizeram -3 provas nas disciplinas: ', numeroAluno, disciplina3provas);
+        console.log('Média das idades de alunos que não fizeram provas em alguma disciplina: ', mediaSemDisciplinas);
+        
+    </script>
+</body>
+
+</html>
