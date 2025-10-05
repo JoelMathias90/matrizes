@@ -1,0 +1,59 @@
+<!--  22. Faça um algoritmo que carregue uma matriz 3 x 4, calcule e mostre:
+• a quantidade de elementos pares;
+ • a soma dos elementos ímpares; 
+• a média de todos os elementos. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function gerarMatriz (linha, coluna) {
+            const matriz = []
+
+            for(let i = 0; i < linha; i++) {
+                matriz[i] = []
+
+                for (let j = 0; j < coluna; j++) {
+                    matriz[i][j] = Math.floor(Math.random() * 100)
+                }
+            }
+
+            return matriz
+        }
+
+        const matriz = gerarMatriz(3, 4)
+        console.table(matriz)
+
+        function calcular (matriz) {
+            let qtdPares = 0
+            let somaImpars = 0
+            let somaTotal = 0
+
+            for (let i = 0; i < matriz.length; i++) {
+                for (let j = 0; j < matriz[i].length; j++) {
+                    if (matriz[i][j] % 2 === 0) qtdPares++
+                    else somaImpars += matriz[i][j]
+                    somaTotal += matriz[i][j]
+                }
+            }
+
+            let media = somaTotal / (matriz.length * matriz[0].length)
+
+            return {media, qtdPares, somaImpars}
+        }
+
+        const resultado = calcular(matriz)
+
+        console.log("Quantidade de Pares: ", resultado.qtdPares);
+        console.log("Soma de Ímpars: ", resultado.somaImpars);
+        console.log("Média total dos elementos: ", resultado.media);
+        
+        
+    </script>
+</body>
+</html>
