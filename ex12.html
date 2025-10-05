@@ -1,0 +1,45 @@
+<!-- 12. Faça um algoritmo que carregue uma matriz 6 x 4. Recalcule a matriz digitada, onde cada linha será 
+multiplicada pelo maior elemento da linha em questão. Mostre a matriz resultante. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function gerarMatriz(linha, coluna) {
+            let matriz = []
+            for (let i = 0; i < linha; i++) {
+                matriz[i] = []
+                for (let j = 0; j < coluna; j++) {
+                    matriz[i][j] = Math.floor(Math.random() * 100)
+                }
+            }
+            return matriz
+        }
+
+        let matriz = gerarMatriz(6, 4);
+        let resultante = []
+        for (let i = 0; i < matriz.length; i++) {
+            resultante[i] = []
+            let max = matriz[i][0]
+            for(let j = 1; j < matriz[0].length; j++) {
+                if (matriz[i][j] > max) max = matriz[i][j]
+            }
+             console.log(max);
+             
+            for(k = 0; k < matriz[i].length; k++) {                
+                resultante[i][k] = matriz[i][k] * max
+            }
+        }
+        console.table(matriz);
+        console.table(resultante);
+    </script>
+</body>
+
+</html>
