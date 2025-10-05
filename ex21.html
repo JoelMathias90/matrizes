@@ -1,0 +1,51 @@
+<!--  21. Faça um algoritmo que carregue uma matriz 6 x 10, some as colunas individualmente e acumule as 
+somas na 7 ª  linha da matriz. Mostre o resultado de cada coluna. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function gerarMatriz (linha, coluna) {
+            const matriz = []
+
+            for(let i = 0; i < linha; i++) {
+                matriz[i] = []
+
+                for (let j = 0; j < coluna; j++) {
+                    matriz[i][j] = Math.floor(Math.random() * 100)
+                }
+            }
+
+            return matriz
+        }
+
+        const matriz = gerarMatriz(6, 10)
+        console.table(matriz)
+
+        function soma_Coluna (matriz) {
+            const somaColunas = []
+            
+            for (let i = 0; i < matriz.length; i++) {
+                for (let j = 0; j < matriz[i].length; j++) {
+                    if (!somaColunas[j]) somaColunas[j] = 0
+                    somaColunas[j] += matriz[i][j]
+                }
+            }
+
+            return somaColunas
+        }
+
+        const somaColunas = soma_Coluna(matriz)
+        console.log(somaColunas);
+        
+        matriz[matriz.length] = somaColunas
+
+        console.table(matriz)
+    </script>
+</body>
+</html>
