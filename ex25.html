@@ -1,0 +1,56 @@
+<!--  25. Faça um algoritmo que receba os preços de 20 produtos em cinco lojas diferentes e armazene-os em 
+uma matriz 20 x 5. Desconsiderando empates, mostre o número do produto e o número da loja do 
+produto mais caro. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function gerarMatriz (linha, coluna) {
+            const matriz = []
+
+            for (let i = 0; i < linha; i++) {
+                matriz[i] = []
+                for (let j = 0; j < coluna; j++) {
+                    matriz[i][j] = +(Math.random() * 100).toFixed(2)
+                }
+            }
+
+            return matriz
+        }
+
+        const matriz = gerarMatriz(20, 5)
+        console.table(matriz)
+
+        function analisarProdutos (matriz) {
+            let maiorPreco = matriz[0][0]
+            let produtoLoja = [0, 0]
+
+            for (let i = 0; i < matriz.length; i++) {
+                for (let j = 0; j < matriz[i].length; j++) {
+                    let preco = matriz[i][j]
+
+                    if (preco > maiorPreco) {
+                        maiorPreco = preco
+                        produtoLoja = [i, j]
+                    }
+                }
+            }
+
+            return { produto: produtoLoja[0] + 1, loja: produtoLoja[1] + 1, maiorPreco, maiorPreco };
+        }
+
+        const produtoLoja = analisarProdutos(matriz)
+
+        console.log("Número do produto: ", produtoLoja.produto);
+        console.log("Número da loja: ", produtoLoja.loja);
+        console.log("Preço: R$", produtoLoja.maiorPreco);
+        
+    </script>
+</body>
+</html>
