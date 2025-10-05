@@ -1,0 +1,71 @@
+<!-- 23. Faça um algoritmo que carregue uma matriz 4 x 5, calcule e mostre um vetor com cinco posições, onde 
+cada posição contém a soma dos elementos de cada coluna da matriz. Mostre apenas os elementos do 
+vetor maiores que dez. Se não existir nenhum elemento maior que dez mostre uma mensagem. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function gerarMatriz(linha, coluna) {
+            const matriz = []
+
+            for (let i = 0; i < linha; i++) {
+                matriz[i] = []
+
+                for (let j = 0; j < coluna; j++) {
+                    matriz[i][j] = Math.floor(Math.random() * 10)
+                }
+            }
+
+            return matriz
+        }
+
+        const matriz = gerarMatriz(4, 5)
+        console.table(matriz);
+
+        
+        function somarColuna(matriz) {
+            const vetor = []
+
+            for (let i = 0; i < matriz.length; i++) {
+                for (let j = 0; j < matriz[i].length; j++) {
+                    if (!vetor[j]) vetor[j] = 0
+                    vetor[j] += matriz[i][j]
+                }
+            }
+
+            return vetor
+        }
+
+        const vetor = somarColuna(matriz)
+        console.log("Soma das colunas: ", vetor);
+
+        function verificarVetor(vetor) {
+            let maior10 = false
+            const maiores10 = []
+
+            for (let i = 0; i < vetor.length; i++) {
+                if (vetor[i] > 10) {
+                    maiores10.push(vetor[i])
+                    maior10 = true
+                }
+            }
+
+            if (!maior10) return console.log("Nenhum elemento maior que 10 encontrado!");
+
+            return maiores10
+        }
+
+        console.log("Elementos no vetor maiores que 10: ", verificarVetor(vetor));
+
+    </script>
+</body>
+
+</html>
