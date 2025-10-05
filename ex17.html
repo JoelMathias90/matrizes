@@ -1,0 +1,46 @@
+<!-- 17. Faça um algoritmo que carregue uma matriz 5 x 5 de números reais, calcule e mostre a soma dos 
+elementos da diagonal secundária. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function gerarMatriz(linha, coluna) {
+            const matriz = []
+
+            for (let i = 0; i < linha; i++) {
+                matriz[i] = []
+                for (let j = 0; j < coluna; j++) {
+                    matriz[i][j] = Math.floor(Math.random() * 100)
+                }
+            }
+
+            return matriz
+        }
+
+        const matriz = gerarMatriz(5, 5)
+        console.table(matriz);
+
+        function somaSegundaDiagonal(matriz) {
+            let soma = 0
+
+            for (let i = 0; i < matriz.length; i++) {
+                soma += matriz[i][matriz[i].length - (i + 1)]
+            }
+
+            return soma
+        }
+
+        console.log("Soma da segunda diagonal: ", somaSegundaDiagonal(matriz));
+
+    </script>
+</body>
+
+</html>
