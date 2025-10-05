@@ -1,0 +1,51 @@
+<!--  20. Faça um algoritmo que carregue uma matriz 5 x 5 de números reais. A seguir, multiplique cada linha 
+pelo elemento da diagonal principal daquela linha. Mostre a matriz após as multiplicações. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function gerarMatriz(linha, coluna) {
+            const matriz = []
+
+            for (let i = 0; i < linha; i++) {
+                matriz[i] = []
+
+                for (let j = 0; j < coluna; j++) {
+                    matriz[i][j] = Math.floor(Math.random() * 100)
+                }
+            }
+
+            return matriz
+        }
+
+        const matriz = gerarMatriz(5, 5)
+        console.table(matriz)
+
+        function multiplicarLinha(matriz) {
+            for (let i = 0; i < matriz.length; i++) {
+                let diagonalNumber = matriz[i][i]
+
+                for (let j = 0; j < matriz[i].length; j++) {
+                    matriz[i][j] *= diagonalNumber
+                }
+            }
+
+            return matriz
+        }
+
+        const matrizResultante = multiplicarLinha(matriz)
+
+        console.table(matrizResultante);
+
+    </script>
+</body>
+
+</html>
