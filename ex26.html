@@ -1,0 +1,70 @@
+<!--  26. Na teoria dos sistemas define-se o elemento MINMAX de uma matriz como sendo o maior elemento da 
+linha onde se encontra o menor elemento da matriz. Faça um algoritmo que leia uma matriz 4 x 7 com 
+números reais, calcule e mostre seu MINMAX e sua posição (linha e coluna) -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function gerarMatriz(linha, coluna) {
+            const matriz = []
+
+            for (let i = 0; i < linha; i++) {
+                matriz[i] = []
+                for (let j = 0; j < coluna; j++) {
+                    matriz[i][j] = Math.floor(Math.random() * 100)
+                }
+            }
+
+            return matriz
+        }
+
+        const matriz = gerarMatriz(4, 7)
+        console.table(matriz)
+
+        function minMax(matriz) {
+            let menor = matriz[0][0]
+            let linhaMenor = 0
+
+            for (let i = 0; i < matriz.length; i++) {
+                for (let j = 0; j < matriz[i].length; j++) {
+                    let valor = matriz[i][j]
+                    if (valor < menor) {
+                        menor = valor
+                        linhaMenor = i
+                    }
+                }
+            }
+
+            let maior = matriz[linhaMenor][0]
+            let colunaMaior = 0
+
+            for (let j = 0; j < matriz[linhaMenor].length; j++) {
+                const valor = matriz[linhaMenor][j]
+                if (valor > maior) {
+                    maior = valor
+                    colunaMaior = j
+                }
+            }
+
+            const valorMinMax = maior
+            const linha = linhaMenor + 1
+            const coluna = colunaMaior + 1
+            return { valorMinMax, linha, coluna, menor }
+        }
+
+        const resultado = minMax(matriz)
+        console.log("Valor do MINMAX: ", resultado.valorMinMax);
+        console.log("linha: ", resultado.linha, "Coluna: ", resultado.coluna);
+        console.log("Menor número da matriz: ", resultado.menor);
+    </script>
+</body>
+
+</html>
