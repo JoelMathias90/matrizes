@@ -1,0 +1,60 @@
+<!--  19. Faça um algoritmo que carregue uma matriz 5 x 5 com números reais e encontre o maior valor da 
+matriz. A seguir, multiplique cada elemento da diagonal principal pelo maior valor encontrado. Mostre a 
+matriz resultante após as multiplicações. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function gerarMatriz(linha, coluna) {
+            const matriz = []
+
+            for (let i = 0; i < linha; i++) {
+                matriz[i] = []
+                for (let j = 0; j < coluna; j++) {
+                    matriz[i][j] = Math.floor(Math.random() * 100)
+                }
+            }
+
+            return matriz
+        }
+
+        const matriz = gerarMatriz(5, 5)
+        console.table(matriz);
+
+        function maiorNumero (matriz) {
+            let maior = matriz[0][0]
+
+            for (let i = 0; i < matriz.length; i++) {
+                for (let j = 0; j < matriz[i].length; j++) {
+                    if (matriz[i][j] > maior) maior = matriz[i][j]
+                }
+            }
+
+            return maior
+        }
+
+        const maior = maiorNumero(matriz)
+
+        function multiplicarDiagonal (matriz, maior) {
+            for (let i = 0; i < matriz.length; i++) {
+                matriz[i][i] *= maior
+            }
+
+            return matriz
+        }
+
+        const matrizResultante = multiplicarDiagonal(matriz, maior)
+
+        console.table(matrizResultante);
+    </script>
+</body>
+
+</html>
