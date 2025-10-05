@@ -1,0 +1,53 @@
+<!--  15. Faça um algoritmo que carregue uma matriz 5 x 5 e crie dois vetores de cinco posições cada um, que 
+contenham, respectivamente, as somas das linhas e das colunas da matriz. Escreva a matriz e os 
+vetores criados. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function gerarMatriz(linha, coluna) {
+            const matriz = []
+
+            for (let i = 0; i < linha; i++) {
+                matriz[i] = []
+
+                for (let j = 0; j < coluna; j++) {
+                    matriz[i][j] = Math.floor(Math.random() * 100)
+                }
+            }
+
+            return matriz
+        }
+
+        const matriz = gerarMatriz(5, 5)
+        const vetorA = []
+        const vetorB = []
+
+        console.table(matriz);
+
+        for (let i = 0; i < matriz.length; i++) {
+            let somaLinha = 0
+            let somaColuna = 0
+            for (let j = 0; j < matriz[i].length; j++) {
+                somaLinha += matriz[i][j]
+                somaColuna += matriz[j][i]
+            }
+            vetorA[i] = somaLinha
+            vetorB[i] = somaColuna
+        }
+
+        console.log(vetorA);
+        console.log(vetorB);
+
+    </script>
+</body>
+
+</html>
