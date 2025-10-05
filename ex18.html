@@ -1,0 +1,47 @@
+<!--  18. Faça um algoritmo que carregue uma matriz 8 x 6 de inteiros, calcule e mostre a média dos elementos 
+das linhas pares da matriz. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function gerarMatriz (linha, coluna) {
+            const matriz = []
+
+            for (let i = 0; i < linha; i++) {
+                matriz[i] = []
+
+                for (let j = 0; j < coluna; j++) {
+                    matriz[i][j] = Math.floor(Math.random() * 100)
+                }
+            }
+
+            return matriz
+        }
+
+        const matriz = gerarMatriz(8, 6)
+        console.table(matriz);
+        
+        function mediaLinhasPares (matriz) {
+            let soma = 0
+            for (let i = 0; i < matriz.length; i++) {
+                if (i % 2 === 0) {
+                    for (let j = 0; j < matriz[i].length; j++) {
+                        soma += matriz[i][j]
+                    }
+                }
+            }
+            
+            let media = soma /( (matriz.length / 2) * matriz[0].length)
+            return parseFloat(media.toFixed(2))
+        }
+        console.log("Soma das linhas pares: ", mediaLinhasPares(matriz));
+        
+    </script>
+</body>
+</html>
