@@ -1,0 +1,39 @@
+<!-- 13. Faça um algoritmo que carregue uma matriz 2 x 3, calcule e mostre a quantidade de elementos da 
+matriz que não pertencem ao intervalo [5,15]. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function gerarMatriz (linha, coluna) {
+            const matriz = []
+
+            for (let i = 0; i < linha; i++) {
+                matriz[i] = []
+                for (let j = 0; j < coluna; j++) {
+                    matriz[i][j] = Math.floor(Math.random() * 20)
+                }
+            }
+
+            return matriz
+        }
+
+        const matriz = gerarMatriz(2, 3)
+        let quantidade = 0
+
+        for (let i = 0; i < matriz.length; i++) {
+            for (let j = 0; j < matriz[i].length; j++) {
+                if (matriz[i][j] < 5 || matriz[i][j] > 15) quantidade++
+            }
+        }
+
+        console.table(matriz);
+        console.log(quantidade);
+    </script>
+</body>
+</html>
