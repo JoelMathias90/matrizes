@@ -1,0 +1,93 @@
+<!--  24. Faça um algoritmo que: 
+• receba o preço de dez produtos e armazene-os em um vetor;
+ • receba a quantidade estocada de cada um desses produtos em cinco armazéns diferentes, 
+utilizando uma matriz 5 x 10.
+ Calcule e mostre:
+ • a quantidade de produtos estocados em cada um dos armazéns;
+ • a quantidade de cada um dos produtos estocados em todos os armazéns juntos;
+ • o preço do produto que possui maior estoque em um único armazém;
+ • o menor estoque armazenado;
+ • o custo de cada armazém. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function precoProdutos(qtd) {
+            const vetor = []
+
+            for (let i = 0; i < qtd; i++) {
+                vetor[i] = Math.floor(Math.random() * 50)
+            }
+
+            return vetor
+        }
+
+        const precos = precoProdutos(10)
+        console.log(precos);
+
+        function gerarMatriz(linha, coluna) {
+            const matriz = []
+
+            for (let i = 0; i < linha; i++) {
+                matriz[i] = []
+                for (let j = 0; j < coluna; j++) {
+                    matriz[i][j] = Math.floor(Math.random() * 10)
+                }
+            }
+
+            return matriz
+        }
+
+        const matriz = gerarMatriz(5, 10)
+        console.table(matriz)
+
+        function verificarMatriz(matriz, precos) {
+            const qtdCadaArmazem = []
+            const valorCadaArmazem = []
+            let totalEstocado = 0
+
+            let maior = [0, 0]
+            let menor = [0, 0]
+
+            for (let i = 0; i < matriz.length; i++) {
+                qtdCadaArmazem[i] = 0
+                valorCadaArmazem[i] = 0
+
+                for (let j = 0; j < matriz[i].length; j++) {
+                    let qtd = matriz[i][j]
+
+                    if (qtd > matriz[maior[0]][maior[1]]) maior = [i, j]
+                    if (qtd < matriz[menor[0]][menor[1]]) menor = [i, j]
+
+                    qtdCadaArmazem[i] += qtd
+                    valorCadaArmazem[i] += qtd * precos[j]
+                    totalEstocado += qtd
+                }
+
+            }
+
+            let valorMaior = precos[maior[1]]
+            let qtdMenorEstoque = matriz[menor[0]][menor[1]]
+
+            return { qtdCadaArmazem, totalEstocado, valorMaior, qtdMenorEstoque, valorCadaArmazem }
+        }
+
+        const resultadoMatriz = verificarMatriz(matriz, precos)
+
+        console.log("Quantida estocado em cada amazém: ", resultadoMatriz.qtdCadaArmazem);
+        console.log("Total de produtos estocado: ", resultadoMatriz.totalEstocado);
+        console.log("Valor do maior produto estocado: ", resultadoMatriz.valorMaior);
+        console.log("Quantidade do menor estoque: ", resultadoMatriz.qtdMenorEstoque);
+        console.log("Valor de cada amazém: ", resultadoMatriz.valorCadaArmazem);
+    </script>
+</body>
+
+</html>
