@@ -1,0 +1,57 @@
+<!-- 14. Faça um algoritmo que carregue uma matriz 12 x 13 e divida todos os elementos de cada linha pelo 
+maior elemento em módulo daquela linha. Escreva a matriz lida e a modificada. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function gerarMatriz(linha, coluna) {
+            const matriz = []
+
+            for (let i = 0; i < linha; i++) {
+                matriz[i] = []
+                for (let j = 0; j < coluna; j++) {
+                    matriz[i][j] = Math.floor(Math.random() * 100)
+                }
+            }
+
+            return matriz
+        }
+
+        const matriz = gerarMatriz(12, 13)
+        console.table(matriz);
+
+        const resultante = []
+
+        for (let i = 0; i < matriz.length; i++) {
+            resultante[i] = []
+            let maiorModulo = matriz[i][0]
+            if (maiorModulo < 0) maiorModulo = -maiorModulo
+
+            for (let j = 0; j < matriz[i].length; j++) {
+                let valor = matriz[i][j]
+                if (valor < 0) valor = -valor
+                if (valor > maiorModulo) maiorModulo = valor
+            }
+
+            for (let k = 0; k < matriz[i].length; k++) {
+                if (maiorModulo !== 0) matriz[i][k] = parseFloat((matriz[i][k] / maiorModulo).toFixed(2))
+                else matriz[i][j] = 0
+            }
+
+        }
+        console.log(0 / 6);
+        
+        console.table(matriz);
+
+    </script>
+</body>
+
+</html>
